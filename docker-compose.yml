@@ -1,0 +1,52 @@
+services:
+  ideas:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./idea_management:/idea_management
+    environment:
+      - DB_HOST=database
+      - DB_NAME=dbname
+      - DB_USER=dbuser
+      - DB_PASS=password
+    command: >
+      sh -c "python3 manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - database
+  
+  database:
+    image: postgres:15.3-bookworm
+    environment:
+      - POSTGRES_DB=dbname
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./idea_management:/idea_management
+  
+  redis:
+    image: redis:7.0.12-bookworm
+    hostname: redis
+    volumes:
+      - ./idea_management:/idea_management
+
+  worker:
+    build:
+      context: .
+    hostname: worker
+    entrypoint: celery
+    command: -A celery_conf.app worker --loglevel=info
+    volumes:
+      - ./idea_management:/idea_management
+    environment:
+      - DB_HOST=database
+      - DB_NAME=dbname
+      - DB_USER=dbuser
+      - DB_PASS=password
+    links:
+      - redis
+    depends_on:
+      - database
+      - redis
+  
