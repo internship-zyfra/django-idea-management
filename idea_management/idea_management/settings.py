@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third-party
+    'tinymce',
 
     # own
     'accounts',
     'chain',
-
+    'idea',
 ]
 
 MIDDLEWARE = [
