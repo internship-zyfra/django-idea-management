@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Новая цепочка</title>
+    <title>Цепочка</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
 
@@ -24,7 +24,7 @@
   <body class="text-center">
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">Обмен идеями</a>
-        <a class="nav-link name_page" href="#">Новая цепочка</a>
+        <a class="nav-link name_page" href="#">Цепочка</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -58,42 +58,31 @@
         </div>
       </nav>
       
-      <form class="form-group">
-        <h1 class="h3 mb-3 font-weight-normal">Новая цепочка</h1>
-        <div class="dropdown-box d-flex row">
-          <p>Стадия 1:</p>
-          <div class="dropdown col-auto">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Звено
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Люк Скайуокер</a>
-              <a class="dropdown-item" href="#">Пётр Петров</a>
-              <a class="dropdown-item" href="#">Алекс Алексов</a>
-            </div>
-            <button class="btn btn-lg btn-danger btn-sm col-auto" type="submit">-</button>
-          </div>
-          
-          <div class="dropdown col-auto">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Звено
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Люк Скайуокер</a>
-              <a class="dropdown-item" href="#">Пётр Петров</a>
-              <a class="dropdown-item" href="#">Алекс Алексов</a>
-            </div>
-            <button class="btn btn-lg btn-danger btn-sm col-auto" type="submit">-</button>
-            <button class="btn btn-lg btn-success btn-sm" type="submit">+</button>
-          </div>
-        </div>
-        
-        <div class="margin-top-50">
-          <button type="submit" class="btn btn-primary user-button">Добавить стадию</button>
-          <button type="submit" class="btn btn-primary user-button">Создать</button>
-        </div>
-      </form>
-
+      <main class="my-auto p-5" id="content">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Стадия 1</th>
+                <th scope="col">Стадия 2</th>
+                <th scope="col">Стадия 3</th>
+                <th scope="col">Стадия 4</th>
+                <th scope="col">Стадия 5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td class="bg-color-green">Люк Скайуокер</td>
+                <td class="bg-color-green">Пётр Петров</td>
+                <td class="bg-color-yellow">Алекс Алексов</td>
+                <td>Ден Смирнов</td>
+                <td>Анна Смирнова</td>
+              </tr>
+            </tbody>
+          </table>
+      </main>
+      
       <footer class="bg-dark text-white py-4 fixed-bottom">
         <div class="container text-center">
           <p>&copy; 2023 Zyfra. Все права защищены.</p>

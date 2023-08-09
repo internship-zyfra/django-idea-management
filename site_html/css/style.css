@@ -91,10 +91,6 @@ input[type=checkbox]{
     accent-color: #88fa4e;
 } */
 
-.card-box {
-  display: flex;
-}
-
 .card {
   margin-right: 30px;
 }
@@ -111,7 +107,40 @@ input[type=checkbox]{
   flex-direction: column;
 }
 
+.card-idea {
+  width: 800px;
+  margin-top: 20px;
+}
+
 .idea-textarea {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.user-checkbox {
+  margin-right: 10px;
+}
+
+.margin-left-5 {
+  margin-right: 5px;
+}
+
+.margin-right-20 {
+  margin-right: 20px;
+}
+
+.margin-right-120 {
+  margin-right: 120px;
+}
+
+.bg-color-green {
+  background-color: green;
+}
+
+.bg-color-yellow {
+  background-color: yellow;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
 }
