@@ -31,6 +31,7 @@ class IdeaMovement(models.Model):
     is_author_reject_his_idea = models.BooleanField(default=False)
     comment = models.TextField(blank=True)
     idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
-    current_chain_link = models.ForeignKey(ChainLink, on_delete=models.CASCADE)
-    next_chain_link = models.ForeignKey(ChainLink, blank=True, on_delete=models.CASCADE)
+    current_chain_link = models.ForeignKey(ChainLink, on_delete=models.CASCADE, related_name='current_idea_movements')
+    next_chain_link = models.ForeignKey(ChainLink, blank=True, on_delete=models.CASCADE,
+                                        related_name='next_idea_movements')
     created_at = models.DateTimeField(default=timezone.now)
