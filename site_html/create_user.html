@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Новый пользователь</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </head>
+
+  <body class="text-center">
+      <nav class="navbar navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Обмен идеями</a>
+        <a class="nav-link name_page" href="#">Новый пользователь</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExample01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Пользователи</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Цепочки</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Идеи</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Идеи в работе</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Создать</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" href="#">Новый пользователь</a>
+                <a class="dropdown-item" href="#">Новая цепочка</a>
+                <a class="dropdown-item" href="#">Новая идея</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+      <form class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">Новый пользователь</h1>
+        <input type="user" id="Username" class="form-control" placeholder="Никнейм" required autofocus>
+        <input type="user" id="name" class="form-control" placeholder="Имя" required autofocus>
+        <input type="user" id="Surname" class="form-control" placeholder="Фамилия" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Почта" required autofocus>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+        <div class="checkbox mb-3">
+        <div class="checbox-box d-flex align-items-start">
+            <div>
+                <input type="checkbox" value="admin" />
+                <label>администратор</label>
+            </div>
+            <div>
+                <input type="checkbox" value="admin" />
+                <label>менеджер</label>
+            </div>
+            <div>
+                <input type="checkbox" value="admin" />
+                <label>автор</label>
+            </div>
+        </div>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Создать</button>
+      </form>
+
+      <footer class="bg-dark text-white py-4 fixed-bottom">
+        <div class="container text-center">
+          <p>&copy; 2023 Zyfra. Все права защищены.</p>
+        </div>
+      </footer>
+  </body>
+</html>
