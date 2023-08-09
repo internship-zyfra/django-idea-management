@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # third-party
 
     # own
+    'accounts',
+
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_BROKER_URL = 'redis://redis:6379/0'
+
+AUTH_USER_MODEL = 'accounts.User'
