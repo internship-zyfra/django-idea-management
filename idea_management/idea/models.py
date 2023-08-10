@@ -4,13 +4,15 @@ from django.db import models
 from sorl.thumbnail import ImageField
 from tinymce.models import HTMLField
 
+USER_MODEL = get_user_model()
+
 
 class Idea(models.Model):
     title = models.CharField(max_length=150)
     body = HTMLField()
     photo = ImageField(blank=True, null=True, upload_to='idea_image/')
     chain_id = models.ForeignKey("chain.Chain", on_delete=models.CASCADE)
-    author_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    author_id = models.ForeignKey(USER_MODEL, on_delete=models.CASCADE)
     is_accepted = models.BooleanField(default=False)
     is_rejected = models.BooleanField(default=False)
     current_chain_link = models.ForeignKey("chain.ChainLink", null=True, blank=True, on_delete=models.CASCADE)
