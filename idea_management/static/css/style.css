@@ -1,0 +1,146 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* .btn-primary {
+    background-color: #88fa4e;
+    border-color: #88fa4e;
+}
+
+.btn-primary:hover {
+    background-color: #1db100;
+    border-color: #1db100;
+}
+
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active {
+    background-color: #1db100;
+    border-color: #1db100;
+    box-shadow: none !important;
+    box-shadow: 0 0 0 0.2rem #9be88c !important;
+    outline: 0 none;
+}
+
+.btn-lg {
+    color: black;
+}
+
+.btn-lg:hover {
+    color: black;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active {
+    color: black;
+}
+
+.form-control:not(:disabled):not(.disabled):focus,
+.form-control:not(:disabled):not(.disabled).focus {
+    box-shadow: none !important;
+    box-shadow: 0 0 0 0.2rem #9be88c !important;
+}
+
+input[type=checkbox]{
+    accent-color: #88fa4e;
+} */
+
+.card {
+  margin-right: 30px;
+}
+
+.user-button {
+  margin-top: 10px;
+}
+
+.name_page {
+  margin-right: auto;
+}
+
+.checbox-box, .user-box-form {
+  flex-direction: column;
+}
+
+.card-idea {
+  width: 800px;
+  margin-top: 20px;
+}
+
+.idea-textarea {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user-checkbox {
+  margin-right: 10px;
+}
+
+.margin-left-5 {
+  margin-right: 5px;
+}
+
+.margin-right-20 {
+  margin-right: 20px;
+}
+
+.margin-right-120 {
+  margin-right: 120px;
+}
+
+.bg-color-green {
+  background-color: green;
+}
+
+.bg-color-yellow {
+  background-color: yellow;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}

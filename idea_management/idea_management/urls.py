@@ -22,6 +22,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
+    path("", include("idea.urls")),
+    path("", include("accounts.urls")),
+    path("", include("chain.urls"))
 ]
 
 if settings.DEBUG:
