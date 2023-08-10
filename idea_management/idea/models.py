@@ -15,7 +15,7 @@ class Idea(models.Model):
     is_rejected = models.BooleanField(default=False)
     current_chain_link = models.ForeignKey("chain.ChainLink", null=True, blank=True, on_delete=models.CASCADE)
 
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False)
 
@@ -38,4 +38,4 @@ class IdeaMovement(models.Model):
     next_chain_link = models.ForeignKey("chain.ChainLink", null=True, blank=True, on_delete=models.CASCADE,
                                         related_name='next_idea_movements')
 
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
