@@ -23,3 +23,5 @@ venv/
 .sass-cache/
 .vagrant/
 
+.env
+dev_db.sqlite3
