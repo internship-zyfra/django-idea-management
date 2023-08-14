@@ -1,5 +1,7 @@
 from django.views.generic import FormView
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.views import View
+from django.shortcuts import redirect
 from accounts.forms import SignInForm
 
 
@@ -21,3 +23,12 @@ class SignInView(FormView):
                 self.request.session.set_expiry(0)
             return super().form_valid(form)
         return self.form_invalid(form)
+
+
+class LogoutView(View):
+    """Класс вьюконтроллер для logout с сайта"""
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            logout(request)
+            return redirect(to='sign_in')
