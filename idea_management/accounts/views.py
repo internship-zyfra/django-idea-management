@@ -31,4 +31,4 @@ class LogoutView(View):
     def get(self, request):
         if request.user.is_authenticated:
             logout(request)
-            return redirect(to='sign_in')
+        return redirect(to='sign_in')
