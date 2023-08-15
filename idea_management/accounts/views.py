@@ -2,6 +2,8 @@ from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 from accounts.forms import SignInForm
 
 
@@ -32,3 +34,7 @@ class LogoutView(View):
         if request.user.is_authenticated:
             logout(request)
         return redirect(to='sign_in')
+    
+
+class MainPageView(LoginRequiredMixin, TemplateView):
+    template_name = 'accounts/main.html'
