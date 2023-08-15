@@ -1,6 +1,7 @@
 from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
+from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
@@ -8,11 +9,8 @@ from accounts.forms import SignInForm
 
 
 class SignInView(FormView):
-    """Класс контроллер для логина на сайт"""
-
     form_class = SignInForm
     template_name = 'sign_in.html'
-    success_url = 'main'
 
     def form_valid(self, form):
         user_email = form.cleaned_data['email']
@@ -23,13 +21,12 @@ class SignInView(FormView):
             login(self.request, user)
             if not remember_me:
                 self.request.session.set_expiry(0)
-            return super().form_valid(form)
+            return redirect('accounts:main')
+        form.add_error(None, 'Неверная почта или пароль!')
         return self.form_invalid(form)
 
 
 class LogoutView(View):
-    """Класс вьюконтроллер для logout с сайта"""
-
     def get(self, request):
         if request.user.is_authenticated:
             logout(request)

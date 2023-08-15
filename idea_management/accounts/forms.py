@@ -3,7 +3,6 @@ from accounts.models import User
 
 
 class SignInForm(forms.ModelForm):
-    """Класс форма для входа на сайт"""
     remember_me = forms.BooleanField(label='Запомнить меня', required=False)
 
     class Meta:
