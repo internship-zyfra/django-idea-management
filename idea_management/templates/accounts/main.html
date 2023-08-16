@@ -5,6 +5,7 @@
 {% endblock %}
 {% block body %}
 
+  {# Если пользователь имеет только флаг is_manager = True, а остальные False, таблица не отображается #}
   {% if not user.is_manager or user.is_manager and user.is_author or user.is_manager and user.is_administrator %}
     <div class="card" style="width: 18rem;">
       <div class="card-header">
