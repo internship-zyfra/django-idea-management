@@ -36,7 +36,7 @@
     <ul class="list-group list-group-flush">
       {% if user.is_administrator %}
         <li class="list-group-item">
-          <a class="nav-link" href="#">Пользователи</a>
+          <a class="nav-link" href="{% url 'accounts:users' %}">Пользователи</a>
         </li>
         <li class="list-group-item">
           <a class="nav-link" href="#">Цепочки</a>

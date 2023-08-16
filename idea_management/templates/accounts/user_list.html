@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+  Пользователи
+{% endblock %}
+
+{% block body %}
+  <main class="my-auto p-5" id="content">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Никнейм</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Почта</th>
+        <th scope="col">Админ</th>
+        <th scope="col">Менеджер</th>
+        <th scope="col">Автор</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for user in user_list %}
+        <tr>
+          <th scope="row">{{ user.id }}</th>
+          <td>{{ user.username }}</td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.is_administrator|yesno:"да,нет" }}</td>
+          <td>{{ user.is_manager|yesno:"да,нет" }}</td>
+          <td>{{ user.is_author|yesno:"да,нет" }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </main>
+{% endblock %}
+

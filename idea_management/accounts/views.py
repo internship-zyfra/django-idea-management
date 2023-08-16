@@ -1,10 +1,13 @@
-from django.views.generic import FormView
-from django.contrib.auth import authenticate, login, logout
+from django.http import Http404
+from django.views.generic import FormView, ListView
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.views import View
 from django.shortcuts import redirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import TemplateView
 from accounts.forms import SignInForm
+
+USER_MODEL = get_user_model()
 
 
 class SignInView(FormView):
@@ -30,7 +33,22 @@ class LogoutView(View):
         if request.user.is_authenticated:
             logout(request)
         return redirect('accounts:sign_in')
-    
+
 
 class MainPageView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/main.html'
+
+
+class UserListView(UserPassesTestMixin, ListView):
+    model = USER_MODEL
+
+    queryset = USER_MODEL.objects.filter(is_active=True).values(
+        'id', 'username', 'first_name', 'last_name', 'email', 'is_administrator', 'is_manager', 'is_author').order_by(
+        'pk')
+
+    def test_func(self):
+        return self.request.user.is_authenticated and self.request.user.is_administrator
+
+    def handle_no_permission(self):
+        raise Http404
+
