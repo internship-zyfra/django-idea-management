@@ -1,7 +1,6 @@
 from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
-from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
@@ -30,7 +29,7 @@ class LogoutView(View):
     def get(self, request):
         if request.user.is_authenticated:
             logout(request)
-        return redirect(to='sign_in')
+        return redirect('accounts:sign_in')
     
 
 class MainPageView(LoginRequiredMixin, TemplateView):
