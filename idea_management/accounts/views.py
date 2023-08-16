@@ -35,3 +35,7 @@ class LogoutView(View):
 
 class MainPageView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/main.html'
+
+
+class Page404View(TemplateView):
+    template_name = 'not_found.html' 
