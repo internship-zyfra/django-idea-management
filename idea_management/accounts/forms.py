@@ -2,35 +2,34 @@ from django import forms
 from accounts.models import User
 
 
-class SignInForm(forms.ModelForm):
-    remember_me = forms.BooleanField(label='Запомнить меня', required=False)
+class SignInForm(forms.Form):
 
-    class Meta:
-        model = User
-        fields = ('email', 'password')
-        widgets = {
-            'email': forms.EmailInput(
-                attrs={
-                    'class': 'form-control', 
-                    'placeholder': 'Почта', 
-                    'required': True, 
-                    'autofocus': True,
-                    'id': 'inputEmail',
-                    'type': 'email'
-                }),
-            'password': forms.PasswordInput(
-                attrs={
-                    'class': 'form-control', 
-                    'placeholder': 'Пароль', 
-                    'required': True,
-                    'id': 'inputPassword',
-                    'type': 'password'
-                }),
-        }
-        labels = {
-            'email': '',
-            'password': '',
-        }
+    email = forms.EmailField(
+        label='',
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Почта',
+                'required': True,
+                'autofocus': True,
+                'id': 'inputEmail',
+                'type': 'email'
+            }
+        )
+    )
+    password = forms.CharField(
+        label='',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Пароль',
+                'required': True,
+                'id': 'inputPassword',
+                'type': 'password'
+            }
+        )
+    )
+    remember_me = forms.BooleanField(label='Запомнить меня', required=False)
 
 
 class EditUserForm(forms.ModelForm):

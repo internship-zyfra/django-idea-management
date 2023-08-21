@@ -56,7 +56,7 @@ class CreateUserView(FormView):
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.email = form.cleaned_data['email']
-            user.password = form.cleaned_data['password']
+            user.set_password(form.cleaned_data['password'])
             user.is_administrator = form.cleaned_data['is_administrator']
             user.is_manager = form.cleaned_data['is_manager']
             user.is_author = form.cleaned_data['is_manager']
