@@ -5,7 +5,7 @@ from django.views import View
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import TemplateView
-from accounts.forms import SignInForm
+from accounts.forms import SignInForm, EditUserForm
 
 USER_MODEL = get_user_model()
 
@@ -56,3 +56,31 @@ class UserListView(UserPassesTestMixin, ListView):
 
 class Page404View(TemplateView):
     template_name = 'not_found.html'
+
+
+class CreateUserView(FormView):
+    form_class = EditUserForm
+    template_name = 'user_edit.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated or not request.user.is_administrator:
+            return redirect('accounts:page404')
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        if self.request.user.is_authenticated and self.request.user.is_administrator:
+            user = form.save(commit=False)
+            user.username = form.cleaned_data['username']
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.email = form.cleaned_data['email']
+            user.password = form.cleaned_data['password']
+            user.is_administrator = form.cleaned_data['is_administrator']
+            user.is_manager = form.cleaned_data['is_manager']
+            user.is_author = form.cleaned_data['is_manager']
+            user.save()
+            return redirect('accounts:users')
+        return redirect('accounts:page404')
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
