@@ -1,10 +1,10 @@
-from django.http import Http404
-from django.views.generic import FormView, ListView
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from django.views import View
-from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.shortcuts import redirect
+from django.views import View
+from django.views.generic import FormView, ListView
 from django.views.generic import TemplateView
+
 from accounts.forms import SignInForm, EditUserForm
 
 USER_MODEL = get_user_model()
@@ -50,8 +50,7 @@ class UserListView(UserPassesTestMixin, ListView):
         return self.request.user.is_authenticated and self.request.user.is_administrator
 
     def handle_no_permission(self):
-        raise Http404
-
+        return redirect('accounts:page404')
 
 
 class Page404View(TemplateView):
