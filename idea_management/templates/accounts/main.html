@@ -14,7 +14,7 @@
             <ul class="list-group list-group-flush">
                 {% if user.is_administrator %}
                     <li class="list-group-item">
-                        <a class="nav-link" href="#">Новый пользователь</a>
+                        <a class="nav-link" href="{% url 'accounts:create_user' %}">Новый пользователь</a>
                     </li>
                     <li class="list-group-item">
                         <a class="nav-link" href="#">Новая цепочка</a>
