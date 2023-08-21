@@ -23,11 +23,11 @@
   <script src="{% static 'js/custom.js' %}"></script>
 </head>
 <body class="text-center">
-  {% if "sign_in" not in request.path %}
+  {% if "login" not in request.path %}
       {% include './includes/menu-navbar.html' %}
   {% endif %}
   {% block body %}{% endblock %}
-  {% if "sign_in" not in request.path %}
+  {% if "login" not in request.path %}
       {% include './includes/footer.html' %}
   {% endif %}
 </body>
