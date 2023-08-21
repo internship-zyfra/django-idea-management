@@ -23,9 +23,9 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
-    path("idea/", include("idea.urls"), name='idea'),
+    # path("idea/", include("idea.urls"), name='idea'),
     path("accounts/", include("accounts.urls"), name='accounts'),
-    path("chain/", include("chain.urls"), name='chain'),
+    # path("chain/", include("chain.urls"), name='chain'),
     path('', RedirectView.as_view(url='/accounts', permanent=True)),
 ]
 
