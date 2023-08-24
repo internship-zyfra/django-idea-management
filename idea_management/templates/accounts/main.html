@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-
-
 {% block body %}
-  {# Если пользователь имеет только флаг is_manager = True, а остальные False, таблица не отображается #}
+
   {% if not user.is_manager or user.is_manager and user.is_author or user.is_manager and user.is_administrator %}
     <div class="card" style="width: 18rem;">
       <div class="card-header">
@@ -17,7 +14,7 @@
             <a class="nav-link" href="{% url 'accounts:create_user' %}">Новый пользователь</a>
           </li>
           <li class="list-group-item">
-            <a class="nav-link" href="#">Новая цепочка</a>
+            <a class="nav-link" href="{% url 'chain:create_chain' %}">Новая цепочка</a>
           </li>
         {% endif %}
         {% if user.is_author %}
@@ -50,7 +47,7 @@
       {% endif %}
       {% if user.is_author and not user.is_administrator %}
         <li class="list-group-item">
-          <a class="nav-link" href="#">Цепочки</a>
+          <a class="nav-link" href="{% url 'chain:chain_list' %}">Цепочки</a>
         </li>
         <li class="list-group-item">
           <a class="nav-link" href="#">Идеи</a>
@@ -61,7 +58,6 @@
           <a class="nav-link" href="#">Идеи</a>
         </li>
       {% endif %}
-
     </ul>
   </div>
 
@@ -83,12 +79,10 @@
       {% if user.is_author %}
         <li class="list-group-item">Автор</li>
       {% endif %}
-
     </ul>
 
     <button class="btn btn-lg btn-primary btn-block user-button" type="button"
-            onclick="location.href='{% url 'accounts:logout' %}'">
-      Выйти
+      onclick="location.href='{% url 'accounts:logout' %}'">Выйти
     </button>
   </div>
 {% endblock %}

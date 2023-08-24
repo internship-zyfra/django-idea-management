@@ -1,7 +1,13 @@
 <nav class="navbar navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="{% url 'accounts:main' %}">Обмен идеями</a>
+    <a class="navbar-brand" href="#">Обмен идеями</a>
     {% if "create_user" in request.path %}
       <a class="nav-link name_page" href="{% url 'accounts:create_user' %}">Новый пользователь</a>
+    {% endif %}
+    {% if "create_chain" in request.path %}
+      <a class="nav-link name_page" href="{% url 'chain:create_chain' %}">Новая цепочка</a>
+    {% endif %}
+    {% if "users" in request.path %}
+      <a class="nav-link name_page" href="{% url 'accounts:users' %}">Пользователи</a>
     {% endif %}
     {% if request.path == "/accounts/" %}
       <a class="nav-link name_page" href="{% url 'accounts:main' %}">Главная</a>
@@ -17,7 +23,7 @@
         </li>
         {% if user.is_administrator %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Пользователи</a>
+            <a class="nav-link" href="{% url 'accounts:users' %}">Пользователи</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Цепочки</a>
@@ -46,7 +52,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             {% if user.is_administrator %}
               <a class="dropdown-item" href="#">Новый пользователь</a>
-              <a class="dropdown-item" href="#">Новая цепочка</a>
+              <a class="dropdown-item" href="{% url 'chain:create_chain' %}">Новая цепочка</a>
             {% endif %}
             {% if user.is_author %}
               <a class="dropdown-item" href="#">Новая идея</a>

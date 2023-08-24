@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block page_title %}
+  Новая цепочка
+{% endblock %}
+
+{% block body %}
+  <form class="form-group" method="POST">
+    {% csrf_token %}
+    <h1 class="h3 mb-3 font-weight-normal">Новая цепочка</h1>
+    <div class="dropdown-box d-flex row">
+      
+      {% for form_chain in form.chain_links %}
+        <p>Стадия {{ forloop.counter }}:</p>
+        <div class="dropdown col-auto">
+          {{ form_chain.as_p }}
+        </div>
+      {% endfor %}
+    </div>
+    
+    <div class="margin-top-50">
+      <button type="submit" class="btn btn-primary user-button">Создать</button>
+    </div>
+  </form>
+ 
+{% endblock %}
