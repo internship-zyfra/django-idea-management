@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+  Список цепочек
+{% endblock %}
+
+
+{% block body %}
+  <ul>
+    {% for chain_entry in chain_data %}
+
+      Цепочка ID: {{ chain_entry.chain.id }}, Автор: {{ chain_entry.chain.chain_author_id.first_name }}
+      {{ chain_entry.chain.chain_author_id.last_name }}
+      <table class="table">
+        <tr>
+          <th>Cтадия</th>
+          <th>Менеджеры</th>
+        </tr>
+        {% for stage_number, managers in chain_entry.managers_by_stage.items %}
+          <tr>
+            <td>{{ stage_number }}</td>
+            <td>
+              {% for manager in managers %}
+                {{ manager.manager_id.first_name }} {{ manager.manager_id.last_name }}<br>
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+
+    {% endfor %}
+  </ul>
+
+{% endblock %}
