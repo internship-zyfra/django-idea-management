@@ -1,10 +1,13 @@
-from django.views.generic import FormView
-from django.contrib.auth import authenticate, login, logout
-from django.views import View
+from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import View
+from django.views.generic import FormView, ListView
 from django.views.generic import TemplateView
+
 from accounts.forms import SignInForm, EditUserForm
+
+USER_MODEL = get_user_model()
 
 
 class SignInView(FormView):
@@ -29,11 +32,25 @@ class LogoutView(View):
     def get(self, request):
         if request.user.is_authenticated:
             logout(request)
-        return redirect(to='sign_in')
-    
+        return redirect('accounts:sign_in')
+
 
 class MainPageView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/main.html'
+
+
+class UserListView(UserPassesTestMixin, ListView):
+    model = USER_MODEL
+
+    queryset = USER_MODEL.objects.filter(is_active=True).values(
+        'id', 'username', 'first_name', 'last_name', 'email', 'is_administrator', 'is_manager', 'is_author').order_by(
+        'pk')
+
+    def test_func(self):
+        return self.request.user.is_authenticated and self.request.user.is_administrator
+
+    def handle_no_permission(self):
+        return redirect('accounts:page404')
 
 
 class Page404View(TemplateView):
@@ -43,7 +60,7 @@ class Page404View(TemplateView):
 class CreateUserView(FormView):
     form_class = EditUserForm
     template_name = 'user_edit.html'
-    
+
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated or not request.user.is_administrator:
             return redirect('accounts:page404')
@@ -63,6 +80,6 @@ class CreateUserView(FormView):
             user.save()
             return redirect('accounts:users')
         return redirect('accounts:page404')
-    
+
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))

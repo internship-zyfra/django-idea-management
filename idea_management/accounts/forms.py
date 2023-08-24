@@ -39,10 +39,10 @@ class EditUserForm(forms.ModelForm):
         fields = (
             'username',
             'first_name',
-            'last_name', 
-            'email', 
-            'password', 
-            'is_administrator', 
+            'last_name',
+            'email',
+            'password',
+            'is_administrator',
             'is_manager',
             'is_author'
         )
@@ -51,7 +51,7 @@ class EditUserForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Никнейм',
-                    'required': True, 
+                    'required': True,
                     'autofocus': True,
                     'type': 'user',
                     'id': 'name'
@@ -60,7 +60,7 @@ class EditUserForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Имя',
-                    'required': True, 
+                    'required': True,
                     'autofocus': True,
                     'type': 'user',
                     'id': 'first_name'
@@ -69,24 +69,24 @@ class EditUserForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Фамилия',
-                    'required': True, 
+                    'required': True,
                     'autofocus': True,
                     'type': 'user',
                     'id': 'last_name'
                 }),
             'email': forms.EmailInput(
                 attrs={
-                    'class': 'form-control', 
-                    'placeholder': 'Почта', 
-                    'required': True, 
+                    'class': 'form-control',
+                    'placeholder': 'Почта',
+                    'required': True,
                     'autofocus': True,
                     'id': 'inputEmail',
                     'type': 'email'
                 }),
             'password': forms.PasswordInput(
                 attrs={
-                    'class': 'form-control', 
-                    'placeholder': 'Пароль', 
+                    'class': 'form-control',
+                    'placeholder': 'Пароль',
                     'required': True,
                     'id': 'inputPassword',
                     'type': 'password'
