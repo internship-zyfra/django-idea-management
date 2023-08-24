@@ -17,13 +17,11 @@
           <th>Cтадия</th>
           <th>Менеджеры</th>
         </tr>
-        {% for stage_number, managers in chain_entry.managers_by_stage.items %}
+        {% for stage_number, manager in chain_entry.managers_by_stage.items %}
           <tr>
             <td>{{ stage_number }}</td>
             <td>
-              {% for manager in managers %}
-                {{ manager.manager_id.first_name }} {{ manager.manager_id.last_name }}<br>
-              {% endfor %}
+              {{ manager.manager_id.first_name }} {{ manager.manager_id.last_name }}<br>
             </td>
           </tr>
         {% endfor %}

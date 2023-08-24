@@ -31,10 +31,10 @@ class CreateChainView(FormView):
                     chain_link.save()
                 
                 query_dict = form.__dict__['data']
-                for i, link_key in enumerate(query_dict, start=0):
+                for link_key in query_dict:
                     if 'chain_link' in link_key:
                         chain_link_manager = ChainLinkManager()
-                        chain_link_manager.manager_id = User.objects.get(pk=int(query_dict[link_key][0]))
+                        chain_link_manager.manager_id = User.objects.get(pk=int(query_dict[link_key]))
                         id_chain = ChainLink.objects.filter(chain_link=chain).order_by('-id')[0].id
                         chain_link_manager.chain_link_id = ChainLink.objects.get(pk=id_chain)
                         chain_link_manager.save()
@@ -43,8 +43,7 @@ class CreateChainView(FormView):
                 print(err)
                 return redirect('chain:create_chain')
             else:
-                # return redirect('chain:chain_list')
-                return redirect('accounts:page404')
+                return redirect('chain:chain_list')
         form.add_error(None, 'Ошибка заполнения формы!')
         return redirect('accounts:page404')
     
@@ -74,10 +73,12 @@ class ChainListView(UserPassesTestMixin, ListView):
         for chain in chains:
             managers_by_stage = {}
             chain_links = ChainLink.objects.filter(chain_link=chain, is_deleted=False)
-
+           
             for link in chain_links:
                 managers = ChainLinkManager.objects.filter(chain_link_id=link, is_deleted=False)
-                managers_by_stage[link.stage_number] = managers
+                if managers:
+                    for stage, man in enumerate(managers, start=1):
+                        managers_by_stage[stage] = man
 
             chain_data.append({
                 'chain': chain,
