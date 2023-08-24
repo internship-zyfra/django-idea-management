@@ -76,7 +76,7 @@ class CreateUserView(FormView):
             user.set_password(form.cleaned_data['password'])
             user.is_administrator = form.cleaned_data['is_administrator']
             user.is_manager = form.cleaned_data['is_manager']
-            user.is_author = form.cleaned_data['is_manager']
+            user.is_author = form.cleaned_data['is_author']
             user.save()
             return redirect('accounts:users')
         return redirect('accounts:page404')
